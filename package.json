@@ -7,6 +7,7 @@
   "private": true,
   "dependencies": {
     "@applemusic-like-lyrics/lyric": "^0.2.4",
+    "@applemusic-like-lyrics/react": "^0.1.5",
     "@remotion/bundler": "4.0.290",
     "@remotion/cli": "4.0.290",
     "@remotion/media-parser": "^4.0.290",

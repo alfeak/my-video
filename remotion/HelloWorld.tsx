@@ -6,7 +6,7 @@ import {
 
 import { z } from "zod";
 import Background from './HelloWorld/background';
-import { LyricPlayerComp } from './HelloWorld/lyricsplayer';
+import { LyricPlayerComp } from './HelloWorld/lyricsplayerComp';
 
 export const helloWorldCompSchema = z.object({
   lyricsUrl: z.string(),

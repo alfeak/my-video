@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { LyricPlayer } from "@applemusic-like-lyrics/react";
 import parseLrc from "./lyricsparse";
-import { useCurrentFrame, useVideoConfig } from "remotion";
-
-
+import { LyricLine } from "@applemusic-like-lyrics/lyric";
+import { LyricsPlayer } from "../lyricsplayer/lyricsplayer";
 type LyricPlayerCompProps = {
     lyricsUrl: string;
 };
@@ -11,9 +9,6 @@ export const LyricPlayerComp: React.FC<LyricPlayerCompProps> = ({
     lyricsUrl,
 }) => {
     const [lyricLines, setLyricLines] = useState<LyricLine[]>([]);
-    const { fps} = useVideoConfig();
-    const frame = useCurrentFrame();
-    const [currentTime, setCurrentTime] = useState(0);
 
     const loadLrcFile = async (filePath: string) => {
         try {
@@ -30,20 +25,11 @@ export const LyricPlayerComp: React.FC<LyricPlayerCompProps> = ({
         loadLrcFile(lyricsUrl);
     }, []);
 
-    useEffect(() =>{
-        setCurrentTime(frame/fps);
-        // console.log(currentTime,frame,fps);
-    },[frame,fps]);
 
     return (
-        <LyricPlayer
-            lyricLines={lyricLines}
-            currentTime={currentTime}
-            style={{
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.5)'  // 0.5 is the alpha value for 50% transparency
-            }}
-        />
+        <div>
+            <LyricsPlayer lyricLines={lyricLines}/>
+        </div>
+
     )
 };
